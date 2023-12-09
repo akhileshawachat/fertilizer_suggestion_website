@@ -70,7 +70,8 @@ function FertilizerRecommendationForm() {
   };
 
   return (
-    <div   style={{backgroundImage: `url(${imageUrl})`,  backgroundSize: '120% 100%',backgroundRepeat: 'no-repeat',marginTop:"80px" ,height:"400px", width:"850px" , marginLeft:"23%"}}>
+    <div className='d-flex align-items-center justify-content-center mt-5'>
+    <div  className='recomm' style={{backgroundImage: `url(${imageUrl})`,  backgroundSize: '120% 100%',backgroundRepeat: 'no-repeat' ,height:"400px", width:"850px", borderRadius:"15px" }}>
       <h2 style={{marginLeft:"25%"}}>Fertilizer Recommendation Form</h2>
       <div>
         <label style={{marginLeft:"25%"}}>Soil Type: </label>
@@ -92,6 +93,7 @@ function FertilizerRecommendationForm() {
           <pre style={{marginLeft:"32%"}} >{JSON.stringify(recommendation, null, 2)}</pre>
         </div>
       )}
+    </div>
     </div>
   );
 }

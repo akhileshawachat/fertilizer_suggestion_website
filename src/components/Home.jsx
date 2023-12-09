@@ -3,7 +3,7 @@
 // import Carousel from 'react-bootstrap/Carousel';
 // import ExampleCarouselImage from 'components/ExampleCarouselImage';
 import React from 'react';
-import { Carousel, Col, Row } from 'react-bootstrap';
+import { Carousel, Col, Container, Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -49,11 +49,11 @@ export function Home(){
             </Carousel>
 
 
-
-      <Row>
-
+    <Container>
+      <Row className='d-flex align-items-center justify-content-center'>
+        
         <Col  lg={4}>
-          <Card style={{ width: '25rem',marginTop:100 ,marginLeft:50}}>
+          <Card style={{  width: '20rem',marginTop:100 }}>
           <Card.Img variant="top" src="https://www.haifa-group.com/sites/default/files/styles/topic_home/public/DL-52128%20Haifa%20Stream%20Podcast%20-%20Web%20Banners%20Chosen%20_0.jpg?itok=2WXSGgkd" />
           <Card.Body>
             <Card.Title>Card Title</Card.Title>
@@ -68,7 +68,7 @@ export function Home(){
 
 
           <Col  lg={4}>
-          <Card style={{ height:'450', width: '25rem',marginTop:100 ,marginLeft:50 }}>
+          <Card style={{ width: '20rem',marginTop:100  }}>
           <Card.Img variant="top" src="https://www.haifa-group.com/sites/default/files/styles/topic_home/public/article/33831__%20dealer_banners_810_400_A-01.jpg?itok=MmSBvnn1" />
           <Card.Body>
             <Card.Title>Card Title</Card.Title>
@@ -82,7 +82,7 @@ export function Home(){
           </Col> 
 
           <Col lg={4}>
-          <Card style={{width: '25rem',marginTop:100,marginLeft:50 }}>
+          <Card style={{width: '20rem',marginTop:100 }}>
           <Card.Img variant="top" src="https://www.haifa-group.com/sites/default/files/styles/topic_home/public/article/33876_Hifa_Group_Foliar_banners_B-04.png?itok=0EIAV5P4" />
           <Card.Body>
             <Card.Title>Card Title</Card.Title>
@@ -99,6 +99,7 @@ export function Home(){
 
 
           </Row>
+          </Container>
           </>
 
   );
