@@ -1,7 +1,11 @@
 import akhilesh from "../Images/Akhilesh.png";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { ApplicationContext } from "../context/context";
+import { useContext } from "react";
 
 export function AboutUs(){
+    const contextValue = useContext(ApplicationContext);
+    console.log(contextValue);
     return(
     <Container className="mt-5">
         <h1>About Us</h1>
@@ -21,7 +25,7 @@ export function AboutUs(){
             </Col>
             <Col>
             <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src />
+                <Card.Img variant="top" src="" />
                     <Card.Body>
                         <Card.Title>Card Title</Card.Title>
                             <Card.Text>
@@ -34,7 +38,7 @@ export function AboutUs(){
             </Col>
             <Col>
             <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src />
+                <Card.Img variant="top" src="" />
                     <Card.Body>
                         <Card.Title>Card Title</Card.Title>
                             <Card.Text>
