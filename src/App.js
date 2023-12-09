@@ -9,6 +9,7 @@ import { Home } from './components/Home';
 import Footer from './components/Footer';
 import { News } from './components/News';
 import { ToastContainer } from 'react-bootstrap';
+import { UserDashboard } from './components/UserDashboard';
 function App() {
   return (
     <div>
@@ -22,6 +23,7 @@ function App() {
           <Route path="/Fertilizer-recommendation" element={<FertilizerRecommendationApp/>}></Route>
           <Route path="/Login" element={<Login/>}></Route>
           <Route path="/Signup" element={<Signup/>}></Route>
+          <Route path='/UserdashBoard' element={<UserDashboard/>}></Route>
         </Route>
       </Routes>
     <br></br>

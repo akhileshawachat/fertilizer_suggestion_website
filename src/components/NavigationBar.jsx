@@ -29,17 +29,6 @@ function NavigationBar() {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
   return (
     <>
       <Navbar
@@ -61,19 +50,20 @@ function NavigationBar() {
               <LinkContainer style={{ color: "white" }} to="/News">
                 <Nav.Link>News</Nav.Link>
               </LinkContainer>
-              <LinkContainer
-                style={{ color: "white" }}
-                to="/Fertilizer-recommendation"
-              >
+              <LinkContainer style={{ color: "white" }} to="/Fertilizer-recommendation" >
                 <Nav.Link>Recommendation</Nav.Link>
               </LinkContainer>
               {currentUser?.isLoggedIn ? (
                 <>
+                <LinkContainer style={{ color: "white" }} to="/UserDashboard">
+                    <Nav.Link>User</Nav.Link>
+                  </LinkContainer>
                 <span onClick={handleLogOut}>
                   <LinkContainer style={{ color: "white" }} to="/Login">
                     <Nav.Link>Sign out</Nav.Link>
                   </LinkContainer>
                   </span>
+                  
                 </>
               ) : (
                 <>
