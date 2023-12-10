@@ -50,11 +50,12 @@ function NavigationBar() {
               <LinkContainer style={{ color: "white" }} to="/News">
                 <Nav.Link>News</Nav.Link>
               </LinkContainer>
-              <LinkContainer style={{ color: "white" }} to="/Fertilizer-recommendation" >
-                <Nav.Link>Recommendation</Nav.Link>
-              </LinkContainer>
+              
               {currentUser?.isLoggedIn ? (
                 <>
+                <LinkContainer style={{ color: "white" }} to="/Fertilizer-recommendation" >
+                <Nav.Link>Recommendation</Nav.Link>
+              </LinkContainer>
                 <LinkContainer style={{ color: "white" }} to="/UserDashboard">
                     <Nav.Link>User</Nav.Link>
                   </LinkContainer>

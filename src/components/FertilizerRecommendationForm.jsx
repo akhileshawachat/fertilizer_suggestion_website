@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Alert, Form } from 'react-bootstrap';
+import { addToSavedData } from '../utils/action';
 const imageUrl ="https://img.freepik.com/free-vector/watercolor-nature-background-with-leaves_52683-59449.jpg";
 //const image2Url ="https://i.pinimg.com/originals/65/98/d6/6598d69f8d1ed76c768c2828f2239f0d.jpg";
 
@@ -44,9 +46,12 @@ function FertilizerRecommendationForm() {
   const [cropType, setCropType] = useState('');
   const [area, setArea] = useState('');
   const [recommendation, setRecommendation] = useState(null);
-
-  const handleRecommendation = () => {
+  const [error, setError] = useState(null);
+  const token = localStorage.getItem("token");
+ const userId = localStorage.getItem("_id");
+  const handleRecommendation = (e) => {
     // Validate user input
+    e.preventDefault();
     if (!soilTypes[soilType] || !crops[cropType] || isNaN(Number(area))) {
       setRecommendation("Invalid input. Please provide valid  soil type, crop type, and area.");
       return;
@@ -65,32 +70,92 @@ function FertilizerRecommendationForm() {
       potassium: soilRecommendation.potassium + cropRequirement.potassium * areaFactor,
       // Add other nutrients as needed
     };
-
+    
     setRecommendation(recommendedFertilizer);
   };
+    
+  //new logic for recomm
+
+  const [formData,setFormData]=useState({soilType:"",cropType:"",area:""});
+const [isSubmitted,setIsSubmitted]=useState(false);
+
+const handleChange=(e)=>{
+  setFormData({...formData,[e.target.name]:e.target.value});
+}
+
+const handleSubmit=async(e)=>{
+  
+
+  e.preventDefault();
+  try {
+    let data = {...formData,...recommendation,userId}
+    console.log("came here ",data);
+     const result= await addToSavedData(token,data);
+     setFormData({soilType:"",cropType:"",area:""});
+     setIsSubmitted(true);
+     setTimeout(()=>{
+      setIsSubmitted(false);
+     },1500);
+     console.log(result.message);
+  } catch (error) {
+      console.log(error);
+  }
+  
+}
+
+
+  // new logic end
 
   return (
     <div className='d-flex align-items-center justify-content-center mt-5'>
-    <div  className='recomm' style={{backgroundImage: `url(${imageUrl})`,  backgroundSize: '120% 100%',backgroundRepeat: 'no-repeat' ,height:"400px", width:"850px", borderRadius:"15px" }}>
+    <div  className='recomm' style={{backgroundImage: `url(${imageUrl})`,  backgroundSize: '120% 100%',backgroundRepeat: 'no-repeat' ,height:"auto", width:"850px", borderRadius:"15px" }}>
       <h2 style={{marginLeft:"25%"}}>Fertilizer Recommendation Form</h2>
-      <div>
-        <label style={{marginLeft:"25%"}}>Soil Type: </label>
-        <input  type="text" value={soilType} onChange={(e) => setSoilType(e.target.value)} style={{marginLeft:"25%",marginTop:"3%"}} />
+      <Form onSubmit={handleSubmit}>
+      <div  >
+        <label style={{marginLeft:"25%",marginTop:"11%"}}><b>Soil Type:</b> </label>
+        <input name="soilType" onKeyUp={handleChange} type="text" value={isSubmitted?formData.soilType:null} onChange={(e) => setSoilType(e.target.value)} style={{marginLeft:"25%",marginTop:"3%"}} />
       </div>
       <div>
-        <label style={{marginLeft:"25%"}}>Crop Type: </label>
-        <input type="text" value={cropType} onChange={(e) => setCropType(e.target.value)} style={{marginLeft:"24%",marginTop:"3%"}} />
+        <label style={{marginLeft:"25%"}}><b>Crop Type:</b> </label>
+        <input name="cropType" onKeyUp={handleChange} type="text" value={isSubmitted?formData.cropType:null} onChange={(e) => setCropType(e.target.value)} style={{marginLeft:"24%",marginTop:"3%"}} />
       </div>
       <div>
-        <label style={{marginLeft:"25%"}}>Area (in acres): </label>
-        <input type="text" value={area} onChange={(e) => setArea(e.target.value)} style={{marginLeft:"21%",marginTop:"3%"}} />
+        <label style={{marginLeft:"25%"}}><b>Area (in acres): </b></label>
+        <input name="area" onKeyUp={handleChange} type="text" value={isSubmitted?formData.area:null} onChange={(e) => setArea(e.target.value)} style={{marginLeft:"21%",marginTop:"3%"}} />
       </div>
-      <button onClick={handleRecommendation} style={{marginLeft:"38%",marginTop:"13%",backgroundColor:"rgb(139, 222, 129)"}}>Get Recommendation</button>
+      <button onClick={handleRecommendation} style={{marginLeft:"38%",marginTop:"8%",backgroundColor:"rgb(139, 222, 129)"}}>Get Recommendation</button>
 
-      {recommendation && (
-        <div style={{backgroundImage: `url(${imageUrl})`,  backgroundSize: '120% 100%',backgroundRepeat: 'no-repeat', height:"200px",marginTop:"5%" }}>
-          <h3 style={{marginLeft:"25%"}}>Fertilizer Recommendation:</h3>
-          <pre style={{marginLeft:"32%"}} >{JSON.stringify(recommendation, null, 2)}</pre>
+    {/*new button and name field for each input*/}
+    <input type='text' name='saveAs' onChange={handleChange} placeholder='Enter text save as'></input>
+     <button type="submit" style={{marginLeft:"38%",marginTop:"2%",backgroundColor:"rgb(139, 222, 129)"}}>SAVE</button>
+
+
+    
+      </Form>
+
+      {isSubmitted?<Alert variant='success'>Info Saved</Alert>:null}
+      {recommendation &&  !error &&(
+        <div style={{marginTop:"4%", height:'auto',backgroundImage:`url(${imageUrl})`,backgroundSize: '120% 100%',backgroundRepeat: 'no-repeat'}}>
+          <h3 style={{ marginLeft: "25%" }}>Fertilizer Recommendation:</h3>
+          <table style={{ marginLeft: "25%", marginTop: "5%", border:'3px solid green', width: "50%" }}>
+            <thead>
+              <tr >
+                <th style={{ padding: "18px", textAlign: "center" }}>Nutrient</th>
+                <th style={{ padding: "18px", textAlign: "center" }}>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(recommendation).map(([nutrient, amount]) => (
+                <tr key={nutrient}>
+                  <td style={{ padding: "8px", textAlign: "center" }}><b>{nutrient}</b></td>
+                  <td style={{ padding: "8px", textAlign: "center" }}>{amount}</td>
+                </tr>
+              ))}
+              {console.log(recommendation)}
+            </tbody>
+          </table>
+        
+         {/* <button onClick={} style={{marginLeft:"38%",marginTop:"8%",backgroundColor:"rgb(139, 222, 129)"}}>Save As</button> */}
         </div>
       )}
     </div>
