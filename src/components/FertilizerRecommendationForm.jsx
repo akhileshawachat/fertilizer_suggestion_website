@@ -148,7 +148,7 @@ const handleSubmit=async(e)=>{
               {Object.entries(recommendation).map(([nutrient, amount]) => (
                 <tr key={nutrient}>
                   <td style={{ padding: "8px", textAlign: "center" }}><b>{nutrient}</b></td>
-                  <td style={{ padding: "8px", textAlign: "center" }}>{amount}</td>
+                  <td style={{ padding: "8px", textAlign: "center" }}>{amount?.toFixed(2)}</td>
                 </tr>
               ))}
               {console.log(recommendation)}

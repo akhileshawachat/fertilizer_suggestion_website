@@ -3,6 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { signUp } from "../utils/authAction";
 import { ApplicationContext } from "../context/context";
 import { toast } from "react-toastify";
+import {
+  MDBBtn,
+  MDBContainer,
+  MDBCard,
+  MDBCardBody,
+  MDBCardImage,
+  MDBRow,
+  MDBCol,
+  MDBInput,
+  MDBSelect
+}
+from 'mdb-react-ui-kit';
 
 function Signup() {
   const [userData, setUserData] = useState({
@@ -90,7 +102,7 @@ function Signup() {
 
   return (
     <>
-      <div className="signUpDiv">
+      {/* <div className="signUpDiv">
         <div className="container-signup">
           <h1 className="signup-heading">Register</h1>
           <p className="signup-heading">
@@ -162,7 +174,62 @@ function Signup() {
             ) : null}
           </div>
         </div>
-      </div>
+      </div> */}
+
+
+
+      <MDBContainer fluid>
+        <MDBRow className='d-flex justify-content-center align-items-center'>
+          <MDBCol lg='8'>
+          <MDBCard className='my-5 rounded-3' style={{maxWidth: '600px'}}>
+            <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp' className='w-100 rounded-top'  alt="Sample photo"/>
+
+              <MDBCardBody className='px-5'>
+              <h3 className="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Registration Info</h3>
+              
+              <MDBInput wrapperClass='mb-4' label='Name' type='text' name="name"
+            id="name"
+            onChange={handleUserInfoChange}
+            onKeyDown={onKeyDown}/>
+
+<MDBInput wrapperClass='mb-4' label='Email' type="email"
+            
+            name="email"
+            id="email"
+            onChange={handleUserInfoChange}
+            onKeyDown={onKeyDown} />
+
+<MDBInput wrapperClass='mb-4' label='Password' type="password"
+            
+            name="password"
+            id="psw"
+            onChange={handleUserInfoChange}
+            onKeyDown={onKeyDown}/>
+            {error && error === "Enter a valid password" ? (
+            <div style={{ color: "red", fontSize: "14px" }}>
+              <p>Password must be : </p>
+              <li>at least 8 character long</li>
+              <li>at least 1 symbol</li>
+              <li>at least 1 lower case</li>
+              <li>at least 1 upper case</li>
+            </div>
+          ) : null}
+
+
+<MDBBtn color='success' className='mb-4' size='lg'  type="submit" onClick={handleOnSignUp}>Register</MDBBtn>
+<p>
+              Already have an account?{" "}
+              <Link to="/login" className="button-link">
+                Sign in
+              </Link>
+              .
+            </p>
+
+              </MDBCardBody>
+          </MDBCard>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
     </>
   );
 }

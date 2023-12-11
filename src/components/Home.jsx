@@ -19,8 +19,8 @@ export function Home(){
                         alt="First slide" height={700}
                     />
                     <Carousel.Caption>
-                        <h3>This is the first slide!</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <h2>"Precision Farming Revolution"</h2>
+                        <p>Unleash the power of precision agriculture with our Fertilizer Suggestion Web App</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item interval={500}>
@@ -30,8 +30,8 @@ export function Home(){
                         alt="Second slide" height={700}
                     />
                     <Carousel.Caption>
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h2>"Smart Fertilization Solutions"</h2>
+                        <p>Cultivate success with our Fertilizer Recommendation System – your one-stop solution</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -41,8 +41,8 @@ export function Home(){
                         alt="Third slide" height={700}
                     />
                     <Carousel.Caption>
-                        <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        <h3>"Cultivating Future Harvests"</h3>
+                        <p>Empowering farmers with knowledge, our Fertilizer Recommendation System combines cutting-edge technology with agricultural expertise</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 
@@ -56,12 +56,11 @@ export function Home(){
           <Card style={{  width: '20rem',marginTop:100 }}>
           <Card.Img variant="top" src="https://www.haifa-group.com/sites/default/files/styles/topic_home/public/DL-52128%20Haifa%20Stream%20Podcast%20-%20Web%20Banners%20Chosen%20_0.jpg?itok=2WXSGgkd" />
           <Card.Body>
-            <Card.Title>Card Title</Card.Title>
+            <Card.Title>HaifaStream - Agriculture  </Card.Title>
             <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+            Protected cropping systems are highly effective means producing more with less, yet true effectiveness must be backed up by true professionality. 
             </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
+            <Button variant="primary">  <a style={{color:'white',textDecoration:'none'}} href='https://www.justdial.com/Mumbai/Fertilizer-Dealers/nct-10203273'>Know More </a></Button>
           </Card.Body>
           </Card>
           </Col> 
@@ -71,12 +70,12 @@ export function Home(){
           <Card style={{ width: '20rem',marginTop:100  }}>
           <Card.Img variant="top" src="https://www.haifa-group.com/sites/default/files/styles/topic_home/public/article/33831__%20dealer_banners_810_400_A-01.jpg?itok=MmSBvnn1" />
           <Card.Body>
-            <Card.Title>Card Title</Card.Title>
+            <Card.Title>Find your nearest dealer</Card.Title>
             <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+            Looking to buy fertilizers? from now on, you can contact your nearest Haifa's dealer quickly & easily, here's how.    Step 1:  Click on the menu bar 
+            "Find a dealer"   
             </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
+            <Button variant="primary"><a style={{color:'white',textDecoration:'none'}} href='https://www.justdial.com/Mumbai/Fertilizer-Dealers/nct-10203273'>Know More </a></Button>
           </Card.Body>
           </Card>
           </Col> 
@@ -85,21 +84,27 @@ export function Home(){
           <Card style={{width: '20rem',marginTop:100 }}>
           <Card.Img variant="top" src="https://www.haifa-group.com/sites/default/files/styles/topic_home/public/article/33876_Hifa_Group_Foliar_banners_B-04.png?itok=0EIAV5P4" />
           <Card.Body>
-            <Card.Title>Card Title</Card.Title>
+            <Card.Title>Foliar Fertilizer</Card.Title>
             <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+            Boost your crops with Haifa's range of foliar fertilizers Discover the Haifa Bonus - small investment that leads to big results   Foliar application of fertilizers 
             </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
+            <Button variant="primary" ><a style={{color:'white',textDecoration:'none'}} href='https://www.justdial.com/Mumbai/Fertilizer-Dealers/nct-10203273'>Know More </a>  </Button>
           </Card.Body>
           </Card>
           </Col> 
 
-
+      
 
 
           </Row>
           </Container>
+          <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      
           </>
 
   );

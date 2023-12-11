@@ -1,117 +1,116 @@
 import React from 'react';
-import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 export default function Footer() {
   return (
-    <MDBFooter style={{backgroundColor:"green"}} className='text-center text-white text-lg-left'>
+    <footer style={{ backgroundColor: 'green' }} className='text-center text-white text-lg-left'>
       <section className='d-flex justify-content-center justify-content-lg-between p-4 border-bottom'>
         <div className='me-5 d-none d-lg-block'>
           <span>Get connected with us on social networks:</span>
         </div>
 
         <div>
-          <a href='' className='me-4 text-reset'>
-            <MDBIcon fab icon="facebook-f" />
+          {/* <a href='/' className='me-4 text-reset'>
+            <i className="fab fa-facebook-f"></i>
           </a>
-          <a href='' className='me-4 text-reset'>
-            <MDBIcon fab icon="twitter" />
+          <a href='/' className='me-4 text-reset'>
+            <i className="fab fa-twitter"></i>
           </a>
-          <a href='' className='me-4 text-reset'>
-            <MDBIcon fab icon="google" />
+          <a href='/' className='me-4 text-reset'>
+            <i className="fab fa-google"></i>
           </a>
-          <a href='' className='me-4 text-reset'>
-            <MDBIcon fab icon="instagram" />
+          <a href='/' className='me-4 text-reset'>
+            <i className="fab fa-instagram"></i>
           </a>
-          <a href='' className='me-4 text-reset'>
-            <MDBIcon fab icon="linkedin" />
+          <a href='/' className='me-4 text-reset'>
+            <i className="fab fa-linkedin"></i>
           </a>
-          <a href='' className='me-4 text-reset'>
-            <MDBIcon fab icon="github" />
-          </a>
+          <a href='/' className='me-4 text-reset'>
+            <i className="fab fa-github"></i>
+          </a> */}
         </div>
       </section>
 
       <section className=''>
-        <MDBContainer className='text-center text-md-start mt-5'>
-          <MDBRow className='mt-3'>
-            <MDBCol md="3" lg="4" xl="3" className='mx-auto mb-4'>
+        <Container className='text-center text-md-start mt-5'>
+          <Row className='mt-3'>
+            <Col md="3" lg="4" xl="3" className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>
-                <MDBIcon icon="gem" className="me-3" />
+                <i className="fas fa-gem me-3"></i>
                 Group 50
               </h6>
               <p>
-                 Lorem ipsum dolor sit amet,
-                consectetur adipisicing elit.
+              "Cultivate success with our Fertilizer Recommendation System – your one-stop solution for optimizing crop yields through personalized nutrient advice, making every harvest a triumph."
               </p>
-            </MDBCol>
+            </Col>
 
-            <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-4'>
-              <h6 className='text-uppercase fw-bold mb-4'>Products</h6>
+            <Col md="2" lg="2" xl="2" className='mx-auto mb-4'>
+              <h6 className='text-uppercase fw-bold mb-4'>SERVICES</h6>
               <p>
-                <a href='#!' className='text-reset'>
-                  Angular
+                <a href='/news' className='text-reset'>
+                  NEWS
                 </a>
               </p>
               <p>
-                <a href='#!' className='text-reset'>
-                  React
+                <a href='/AboutUs' className='text-reset'>
+                  About Us
                 </a>
               </p>
               <p>
-                <a href='#!' className='text-reset'>
-                  Vue
+                <a href='/Login' className='text-reset'>
+                  Login Page
                 </a>
               </p>
               <p>
-                <a href='#!' className='text-reset'>
-                  Laravel
+                <a href='/' className='text-reset'>
+                  
                 </a>
               </p>
-            </MDBCol>
+            </Col>
 
-            <MDBCol md="3" lg="2" xl="2" className='mx-auto mb-4'>
+            <Col md="3" lg="2" xl="2" className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>Useful links</h6>
               <p>
-                <a href='#!' className='text-reset'>
-                  Pricing
+                <a href='https://www.justdial.com/Mumbai/Fertilizer-Dealers/nct-10203273' className='text-reset'>
+                  Top Dealers
                 </a>
               </p>
               <p>
-                <a href='#!' className='text-reset'>
-                  Settings
+                <a href='https://geopard.tech/blog/what-is-the-best-type-of-fertilizer/' className='text-reset'>
+                  Types Of Fertilizers
                 </a>
               </p>
               <p>
-                <a href='#!' className='text-reset'>
-                  Orders
-                </a>
+               
               </p>
               <p>
                 <a href='#!' className='text-reset'>
                   Help
                 </a>
               </p>
-            </MDBCol>
+            </Col>
 
-            <MDBCol md="4" lg="3" xl="3" className='mx-auto mb-md-0 mb-4'>
+            <Col md="4" lg="3" xl="3" className='mx-auto mb-md-0 mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>Contact</h6>
               <p>
-                <MDBIcon icon="home" className="me-2" />
-                New York, NY 10012, US
+                <i className="fas fa-home me-2"></i>
+                Mumbai, Maharashtra 10012, IND
               </p>
               <p>
-                <MDBIcon icon="envelope" className="me-3" />
-                info@example.com
+                <i className="fas fa-envelope me-3"></i>
+                group50@cdac.com
               </p>
               <p>
-                <MDBIcon icon="phone" className="me-3" /> + 01 234 567 88
+                <i className="fas fa-phone me-3"></i>
+                + 01 234 567 88
               </p>
               <p>
-                <MDBIcon icon="print" className="me-3" /> + 01 234 567 89
+                <i className="fas fa-print me-3"></i>
+                + 01 234 567 89
               </p>
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
+            </Col>
+          </Row>
+        </Container>
       </section>
 
       <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
@@ -120,6 +119,7 @@ export default function Footer() {
           Group 50
         </a>
       </div>
-    </MDBFooter>
+    </footer>
   );
 }
+

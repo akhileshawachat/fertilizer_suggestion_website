@@ -3,6 +3,19 @@ import { ApplicationContext } from "../context/context";
 import { loginHandle } from "../utils/authAction";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import React from 'react';
+import { Carousel, Col, Container, Row } from 'react-bootstrap';
+import {
+    MDBBtn,
+    MDBContainer,
+    MDBRow,
+    MDBCol,
+    MDBInput
+  }
+  from 'mdb-react-ui-kit';
+
+
+
 
 const Login= ()=> {
     const navigate = useNavigate();
@@ -68,10 +81,11 @@ const Login= ()=> {
 
     return(
         <>
-            <div className="signUpDiv">
-                <div className="container-signup">
-                    <h1 className="signup-heading">Login</h1>
-                    <p className="signup-heading">Please fill in this form to login to your account</p>
+        {/* <Container>
+            <div >
+                <div >
+                    <h1 >Login</h1>
+                    <p >Please fill in this form to login to your account</p>
                     <label htmlFor="email">Email</label>
                     <input type="email" placeholder="Enter Email" name="email" value={userData.email} id="email" onChange={handleUserInfoChange} onKeyDown={onKeyDown}/>
 
@@ -106,7 +120,7 @@ const Login= ()=> {
 
                             <div className="">
                                 <p>
-                                    Do not have an account?{" "}
+                                    Do not have an account?
                                     <Link to="/signup" className="button-link">Register</Link>
                                     .
                                 </p>
@@ -116,6 +130,72 @@ const Login= ()=> {
                             </div>
                 </div>
             </div>
+            </Container> */}
+
+
+            <MDBContainer className="my-5 gradient-form">
+                <MDBRow>
+                    <MDBCol col='6' className="mb-5">
+                        <div className="text-center">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                            style={{width: '185px'}} alt="logo" />
+                            <h4 className="mt-1 mb-5 pb-1">We are team 50</h4>
+                        </div>
+
+                        <p>Please login to your account</p>
+
+                        <MDBInput wrapperClass='mb-4' label='Email address' type='email' placeholder="Enter Email" name="email" value={userData.email} id="email" onChange={handleUserInfoChange} onKeyDown={onKeyDown}/>
+
+
+            <MDBInput wrapperClass='mb-4' label='Password'  type='password'  placeholder="Enter Password"
+                            name="password"
+                            id="psw-repeat"
+                            value={userData.password}
+                            onChange={handleUserInfoChange}
+                            onKeyDown={onKeyDown}/>
+                            {error && error === "Enter a valid password"?(
+                                <div style={{color:"red",fontSize:"14px"}}>
+                                    <p>Password must be :</p>
+                                    <li>at least 8 character long</li>
+                                    <li>at least 1 symbol</li>
+                                    <li>at least 1 lower case</li>
+                                    <li>at least 1 upper case</li>
+                                    </div>
+                            ):null}
+
+<div className="text-center pt-1 mb-5 pb-1">
+              <MDBBtn className="mb-4 w-100 gradient-custom-2" type="submit"  onClick={handleOnLogin}>Sign in</MDBBtn>
+            </div>
+
+
+            <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
+              <p className="mb-0">Don't have an account?<Link to="/signup" className="button-link">Register</Link></p>
+              {error?(
+                                    <h4 style={{color:"red", marginTop:"20px"}}>{error}</h4>
+                                ):null}
+              
+            </div>
+
+
+
+                    </MDBCol>
+
+                    {/* <MDBCol col='6' className="mb-5">
+          <div className="d-flex flex-column  justify-content-center gradient-custom-2 h-100 mb-4">
+
+            <div className="text-white px-3 py-4 p-md-5 mx-md-4">
+              <h4 class="mb-4">We are more than just a company</h4>
+              <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+
+          </div>
+
+        </MDBCol> */}
+                </MDBRow>
+            </MDBContainer>
         </>
     );
 };
