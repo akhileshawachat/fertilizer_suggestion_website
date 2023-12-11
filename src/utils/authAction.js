@@ -17,7 +17,7 @@ export const loginHandle = (data)=>{
     return new Promise(async(resolve,reject)=>{
         try{
             let response = await axios.post(`${backendUrl}/auth/login`,data);
-            resolve(response.data);
+            resolve(response.data); 
         }catch(err){
             reject(err);
         }

@@ -10,7 +10,7 @@ export function AboutUs(){
     console.log(contextValue);
     return(
         <>
-        <div className="mt-2">
+        <div className="mt-5">
         <MDBCard background='dark' className='text-white' >
         <MDBCardHeader>Our Goal</MDBCardHeader>
         <MDBCardBody>
@@ -22,12 +22,13 @@ export function AboutUs(){
       </MDBCard>
         </div>
     <Container className="mt-5">
-        <h1>About Us</h1>
-        <Row>
+        <h1 className="d-flex align-item-center justify-content-center mt-5">About Us</h1>
+        <div className="d-flex align-item-center justify-content-center mt-5">
+        <Row style={{gap:"10rem"}}>
             <Col>
             
-            <Card style={{ width: '18rem', backgroundColor: "#393646" }}>
-                <Card.Img variant="top" src={akhilesh} />
+            <Card style={{ width: '16rem', backgroundColor: "#393646" }}>
+                <Card.Img variant="top" src={akhilesh} style={{height: '60vh'}}/>
                     <Card.Body className="text-light">
                         <Card.Title>Akhilesh Awachat</Card.Title>
                             <Card.Text>
@@ -40,8 +41,8 @@ export function AboutUs(){
             
             </Col>
             <Col>
-            <Card style={{ width: '18rem', backgroundColor: "#393646" }}>
-                <Card.Img variant="top" src={nishant} />
+            <Card style={{ width: '17rem', backgroundColor: "#393646" }}>
+                <Card.Img variant="top" src={nishant}  style={{height: '60vh'}}/>
                     <Card.Body className="text-light">
                         <Card.Title>Nishant Bangar</Card.Title>
                             <Card.Text>
@@ -66,6 +67,7 @@ export function AboutUs(){
             </Card>
             </Col> */}
         </Row>
+        </div>
     </Container>
     </>
     );
