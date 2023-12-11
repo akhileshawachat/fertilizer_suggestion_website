@@ -7,8 +7,7 @@ import { toast } from "react-toastify";
 
 export function UserDashboard(){
   
-  // useDocumentTitle("User");
-  // const { currentUser, , setTodos } = useContext(ApplicationContext);
+ 
   const [fertilizerForUser,setFertilizerForUser] = useState([]);
   const [showDialog, setShowDialog] = useState(false);
   const [selectedArea,setSelectedArea] = useState("");

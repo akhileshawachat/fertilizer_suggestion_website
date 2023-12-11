@@ -139,7 +139,7 @@ const Login= ()=> {
                         <div className="text-center">
                             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
                             style={{width: '185px'}} alt="logo" />
-                            <h4 className="mt-1 mb-5 pb-1">We are team 50</h4>
+                            <h4 className="mt-1 mb-5 pb-1">We are Soil Sage</h4>
                         </div>
 
                         <p>Please login to your account</p>

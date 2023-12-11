@@ -49,60 +49,116 @@ function FertilizerRecommendationForm() {
   const [error, setError] = useState(null);
   const token = localStorage.getItem("token");
  const userId = localStorage.getItem("_id");
-  const handleRecommendation = (e) => {
-    // Validate user input
-    e.preventDefault();
-    if (!soilTypes[soilType] || !crops[cropType] || isNaN(Number(area))) {
-      setRecommendation("Invalid input. Please provide valid  soil type, crop type, and area.");
-      return;
-    }
-
-    // Calculate fertilizer recommendations based on user input
-    const soilRecommendation = soilTypes[soilType];
-    const cropRequirement = crops[cropType];
-
-    // Adjust recommendations based on area (hypothetical example)
-    const areaFactor = 1 + Number(area) / 100;   // Adjust based on your actual calculations
-
-    const recommendedFertilizer = {
-      nitrogen: soilRecommendation.nitrogen + cropRequirement.nitrogen * areaFactor,
-      phosphorus: soilRecommendation.phosphorus + cropRequirement.phosphorus * areaFactor,
-      potassium: soilRecommendation.potassium + cropRequirement.potassium * areaFactor,
-      // Add other nutrients as needed
-    };
+//   const handleRecommendation = (e) => {
     
-    setRecommendation(recommendedFertilizer);
-  };
+//     e.preventDefault();
+//     if (!soilTypes[soilType] || !crops[cropType] || isNaN(Number(area))) {
+//       setRecommendation("Invalid input. Please provide valid  soil type, crop type, and area.");
+//       return;
+//     }
+
+//     // Calculate fertilizer recommendations based on user input
+//     const soilRecommendation = soilTypes[soilType];
+//     const cropRequirement = crops[cropType];
+
+//     // Adjust recommendations based on area (hypothetical example)
+//     const areaFactor = 1 + Number(area) / 100;   // Adjust based on your actual calculations
+
+//     const recommendedFertilizer = {
+//       nitrogen: soilRecommendation.nitrogen + cropRequirement.nitrogen * areaFactor,
+//       phosphorus: soilRecommendation.phosphorus + cropRequirement.phosphorus * areaFactor,
+//       potassium: soilRecommendation.potassium + cropRequirement.potassium * areaFactor,
+//       // Add other nutrients as needed
+//     };
     
-  //new logic for recomm
+//     setRecommendation(recommendedFertilizer);
+//   };
+    
+//   //new logic for recomm
 
-  const [formData,setFormData]=useState({soilType:"",cropType:"",area:""});
-const [isSubmitted,setIsSubmitted]=useState(false);
+//   const [formData,setFormData]=useState({soilType:"",cropType:"",area:""});
+// const [isSubmitted,setIsSubmitted]=useState(false);
 
-const handleChange=(e)=>{
-  setFormData({...formData,[e.target.name]:e.target.value});
-}
+// const handleChange=(e)=>{
+//   setFormData({...formData,[e.target.name]:e.target.value});
+// }
 
-const handleSubmit=async(e)=>{
+// const handleSubmit=async(e)=>{
   
 
-  e.preventDefault();
-  try {
-    let data = {...formData,...recommendation,userId}
-    console.log("came here ",data);
-     const result= await addToSavedData(token,data);
-     setFormData({soilType:"",cropType:"",area:""});
-     setIsSubmitted(true);
-     setTimeout(()=>{
-      setIsSubmitted(false);
-     },1500);
-     console.log(result.message);
-  } catch (error) {
-      console.log(error);
+//   e.preventDefault();
+//   try {
+//     let data = {...formData,...recommendation,userId}
+//     console.log("came here ",data);
+//      const result= await addToSavedData(token,data);
+//      setFormData({soilType:"",cropType:"",area:""});
+//      setIsSubmitted(true);
+//      setTimeout(()=>{
+//       setIsSubmitted(false);
+//      },1500);
+//      console.log(result.message);
+//   } catch (error) {
+//       console.log(error);
+//   }
+  
+// }
+
+
+const handleRecommendation = () => {
+  // Validate user input
+  if (!soilTypes[soilType] || !crops[cropType] || isNaN(Number(area))) {
+    setError("Invalid input. Please provide valid soil type, crop type, and area.");
+    setRecommendation(null);
+    return;
   }
-  
-}
 
+  // Calculate fertilizer recommendations based on user input
+  const soilRecommendation = soilTypes[soilType];
+  const cropRequirement = crops[cropType];
+
+  // Adjust recommendations based on area (hypothetical example)
+  const areaFactor = 1 + Number(area) / 100;
+
+  const recommendedFertilizer = {
+    nitrogen: soilRecommendation.nitrogen + cropRequirement.nitrogen * areaFactor,
+    phosphorus: soilRecommendation.phosphorus + cropRequirement.phosphorus * areaFactor,
+    potassium: soilRecommendation.potassium + cropRequirement.potassium * areaFactor,
+  };
+
+  setRecommendation(recommendedFertilizer);
+  setError(null);
+};
+
+const [formData, setFormData] = useState({ soilType: "", cropType: "", area: "" });
+const [isSubmitted, setIsSubmitted] = useState(false);
+
+const handleChange = (e) => {
+  setFormData({ ...formData, [e.target.name]: e.target.value });
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (!formData.soilType.trim() || !formData.cropType.trim() || !formData.area.trim()) {
+    alert('Please fill in all fields before submitting.');
+    return;
+  }
+
+  try {
+    const data = { ...formData, ...recommendation, userId };
+    const result = await addToSavedData(token, data);
+    setFormData({ soilType: "", cropType: "", area: "" });
+    setIsSubmitted(true);
+
+    setTimeout(() => {
+      setIsSubmitted(false);
+    }, 1500);
+
+    console.log(result.message);
+  } catch (error) {
+    console.log(error);
+    }
+  };
 
   // new logic end
 
@@ -123,11 +179,11 @@ const handleSubmit=async(e)=>{
         <label style={{marginLeft:"25%"}}><b>Area (in acres): </b></label>
         <input name="area" onKeyUp={handleChange} type="text" value={isSubmitted?formData.area:null} onChange={(e) => setArea(e.target.value)} style={{marginLeft:"21%",marginTop:"3%"}} />
       </div>
-      <button onClick={handleRecommendation} style={{marginLeft:"38%",marginTop:"8%",backgroundColor:"rgb(139, 222, 129)"}}>Get Recommendation</button>
+      <button onClick={handleRecommendation} style={{marginLeft:"38%",marginTop:"8%",backgroundColor:"rgb(139, 222, 129)"}}>Get Recommendation</button><br></br>
 
     {/*new button and name field for each input*/}
-    <input type='text' name='saveAs' onChange={handleChange} placeholder='Enter text save as'></input>
-     <button type="submit" style={{marginLeft:"38%",marginTop:"2%",backgroundColor:"rgb(139, 222, 129)"}}>SAVE</button>
+    <input type='text' name='saveAs' style={{marginLeft:"30%"}} onChange={handleChange} placeholder='Enter text save as'></input>
+     <button type="submit" style={{marginLeft:"5%",marginTop:"2%",backgroundColor:"rgb(139, 222, 129)"}}>SAVE</button>
 
 
     
@@ -135,7 +191,8 @@ const handleSubmit=async(e)=>{
 
       {isSubmitted?<Alert variant='success'>Info Saved</Alert>:null}
       {recommendation &&  !error &&(
-        <div style={{marginTop:"4%", height:'auto',backgroundImage:`url(${imageUrl})`,backgroundSize: '120% 100%',backgroundRepeat: 'no-repeat'}}>
+        <div className='mt-5'>
+        <div style={{ borderRadius:"15px", marginTop:"10%", height:'auto',backgroundImage:`url(${imageUrl})`,backgroundSize: '120% 100%',backgroundRepeat: 'no-repeat'}}>
           <h3 style={{ marginLeft: "25%" }}>Fertilizer Recommendation:</h3>
           <table style={{ marginLeft: "25%", marginTop: "5%", border:'3px solid green', width: "50%" }}>
             <thead>
@@ -156,6 +213,7 @@ const handleSubmit=async(e)=>{
           </table>
         
          {/* <button onClick={} style={{marginLeft:"38%",marginTop:"8%",backgroundColor:"rgb(139, 222, 129)"}}>Save As</button> */}
+        </div>
         </div>
       )}
     </div>
