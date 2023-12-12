@@ -186,9 +186,7 @@ const Login= ()=> {
             <div className="text-white px-3 py-4 p-md-5 mx-md-4">
               <h4 class="mb-4">We are more than just a company</h4>
               <p class="small mb-0">
-Certainly! Here's a description for a fertilizer suggestion website along with a catchy slogan:
 
-Website Description:
 
 Welcome to Soil Sage, your one-stop destination for personalized fertilizer recommendations! We understand that the key to a thriving garden is the right balance of nutrients, and we're here to simplify the process for you.<br></br><br></br>
 
